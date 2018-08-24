@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#PBS -l walltime=01:00:00:00,nodes=1:ppn=20
+#PBS -m abe
+#PBS -M user@institute.be
+#PBS -A projectname
+
+
+cd $VSC_SCRATCH/REMAP
+
+export OMP_NUM_THREADS=1
+
+python TCID_GeneID_Probesets.py "HTA-2_0.na35.2.hg19.transcript.csv" "HTA-2_0.na35.hg19.probeset.csv" "HTA-2_0_Output" "HTA-2_0"
+     

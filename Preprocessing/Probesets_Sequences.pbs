@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#PBS -l walltime=01:00:00:00,nodes=1:ppn=20
+#PBS -m abe
+#PBS -M user@institute.be
+#PBS -A projectname
+
+
+cd $VSC_SCRATCH/REMAP
+
+export OMP_NUM_THREADS=1
+
+python Probesets_Sequences.py "HTA-2_0.r3.clf" "HTA-2_0.r3.clf" 11 "HTA-2_0_Output" "Probeset_Sequences.txt" "Probeset_SequenceIndices.txt"

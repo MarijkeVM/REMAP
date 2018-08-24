@@ -1,0 +1,14 @@
+#!/bin/bash -l
+#PBS -l walltime=00:02:00:00,nodes=1:ppn=20
+#PBS -m abe
+#PBS -M marijke.vanmoerbeke@uhasselt.be
+#PBS -A lp_h_gdsproject
+
+cd $VSC_SCRATCH/REMAP
+
+source activate REMAP
+
+export OMP_NUM_THREADS=1
+
+python REMAP.py "HTA-2_0_Examples.txt" "HTA-2_0_Examples_Probeset_SequenceIndices.txt" "HTA-2_0_Examples_Probeset_Sequences.txt" "HTA-2_0_Output" "HTA-2_0"
+

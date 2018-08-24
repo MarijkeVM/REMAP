@@ -1,0 +1,14 @@
+#!/bin/bash -l
+#PBS -l walltime=04:00:00:00,nodes=1:ppn=20
+#PBS -m abe
+#PBS -M email@institute.be
+#PBS -A project
+
+cd $VSC_SCRATCH/REMAP
+
+source activate REMAP
+
+export OMP_NUM_THREADS=1
+
+python REMAP.py "TCID_GeneID_Probesets.txt" "Probset_SequenceIndices.txt" "Probset_Sequences.txt" "OutputFolder" "prefix"
+

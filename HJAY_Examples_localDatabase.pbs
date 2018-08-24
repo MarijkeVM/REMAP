@@ -1,0 +1,18 @@
+#!/bin/bash -l
+#PBS -l walltime=00:02:00:00,nodes=1:ppn=20
+#PBS -m abe
+#PBS -M marijke.vanmoerbeke@uhasselt.be
+#PBS -A lp_h_gdsproject
+
+cd $VSC_SCRATCH/REMAP
+
+source activate REMAP
+$VSC_DATA/mysql/bin/mysqld_safe --user vsc31011 & 
+sleep 30
+
+export OMP_NUM_THREADS=1
+
+python REMAP.py "HJAY_Examples.txt" "HJAY_Examples_Probeset_SequenceIndices.txt" "HJAY_Examples_Probeset_Sequences.txt" "HJAY_Output" "HJAY"
+
+$VSC_DATA/mysql/bin/mysqladmin -u root -p  ensembl shutdown
+wait
